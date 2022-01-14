@@ -44,12 +44,12 @@ class AppProvider extends ChangeNotifier {
       //The other case which the current hour is greater than the initial hour
       //Next step is to subtract inithour from currenthour and then subtract with 3 as the timepoint steps are 3,
       //Last step is to calculate the reminder to know how many itareble steps will be taken in our dateseries.
-      timePointFromNow = ((timeNow.hour < initTime.hour
-                  ? timeNow.hour + 24
-                  : timeNow.hour - initTime.hour) /
-              3)
-          .remainder(3)
-          .round();
+      timePointFromNow =
+          (((timeNow.hour < initTime.hour ? timeNow.hour + 24 : timeNow.hour) -
+                      initTime.hour) /
+                  3)
+              .remainder(3)
+              .round();
       getWeatherDataNow();
       notifyListeners();
     }).catchError((error) {
